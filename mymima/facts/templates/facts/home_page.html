@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+    <meta charset="UTF-8">
+    <title>Mima</title>
+</head>
+<body>
+<div class="center">
+    <a href="/">
+        <img src="{% static 'images/logo.png' %}" alt="logo">
+    </a>
+{#    <form method="post" novalidate>#}
+{#        {% csrf_token %}#}
+{#        <ul>#}
+{#            {{ form.as_ul }}#}
+{#        </ul>#}
+{#        <button>הולכת מחפשת</button>#}
+{#    </form>#}
+    <form action="{% url 'facts:search' %}" method="get">
+        <input type="text" align="right" id="searchbar" name="q" value="{{ request.GET.q }}">
+        <input type="submit" value="הולכת מחפשת" id="">
+    </form>
+    <p>
+        דפדף לפי שם אמן:
+        <br>
+    <div>
+        <table border="0" align="center">
+            <tr>
+                {% for let in letters %}
+                    <td bgcolor="#CCFFCC"><a href="{% url 'facts:artists' let %}">{{ let }}</a></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <p>
+        דפדף לפי שם שיר:
+        <br>
+
+    <table border="0" align="center">
+        <tr>
+            {% for let in letters %}
+                <td bgcolor="#FFCCCC"><a href="{% url 'facts:songs' let %}">{{ let }}</a></td>
+            {% endfor %}
+
+        </tr>
+    </table>
+
+    <p>
+        <a href="{% url 'facts:add' %}"> הוסף עובדה חדשה </a> &nbsp;<!-- <a href="ask.php"> שאל את מימה </a> &nbsp; -->
+        <a href="#">שאלות ללא תשובות </a> &nbsp;
+        <a href="#"> מה חדש </a> &nbsp;
+        <a href="#"><b> תפתיעי אותי </b></a> &nbsp;
+        <br>
+    <p class="psico">
+        <a href="#"> RSS</a> &nbsp;
+        <a href="#"> תנאי שימוש</a> &nbsp;
+        <a href="#" > פסיכולוגית</a> &nbsp;
+        <a href="#"> פסיכולוג </a> &nbsp;
+        <a href="#"> תודות</a> &nbsp;
+        <a href="#"> צור קשר</a>
+    <p>
+        <br>
+        מימה, 2020</center>
+
+</div>
+
+
+</body>
+</html>

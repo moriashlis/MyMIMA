@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}
+    תוצאות חיפוש
+{% endblock %}
+{% block content %}
+    <div
+            style="height: 10px" class="artist_found">
+    </div>
+    <div>
+        <h2>תוצאות באמנים</h2>
+        {% for artist in artists %}
+            <p><a href="{% url 'facts:song_by_artist' artist %}">{{ artist }}</a></p>
+        {% endfor %}
+    </div>
+    <div>
+        <h2>תוצאות בשירים</h2>
+        {% for song in songs %}
+            <p><a href="/facts/{{ song }}/{{ song.artist }}">{{ song }}</a> - {{ song.artist }}</p>
+        {% endfor %}
+    </div>
+    <div>
+        <h2>עובדות שקשורות:</h2>
+        {% for fact in facts %}
+            <p style="background-color: {{ fact.1 }}; width: 60%">
+            <a href="/facts/{{ fact.0.song }}/{{ fact.0.song.artist }}">{{ fact.0.song }}</a> - {{ fact.0.song.artist }}
+                <br>
+                {{ fact.0 }}
+            </p>
+        {% endfor %}
+    </div>
+{% endblock %}

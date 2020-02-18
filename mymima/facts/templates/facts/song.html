@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    שירים
+{% endblock %}
+{% block content %}
+    <div class="artist_found">
+    מצאנו {{count}} שירים שמתחילים באות {{let}}:
+    </div>
+    <div>
+    {% for song in artist_list %}
+        <p><a href="/facts/{{ song.0 }}/{{ song.1 }}">{{ song.0 }}</a> - {{ song.1 }}</p>
+    {% endfor %}
+    </div>
+{% endblock %}

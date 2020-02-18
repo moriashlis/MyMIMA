@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet"
+          href="{% static "css/base.css" %}">
+    <title>{% block title %}PO TIDCHUF TITLE{% endblock %}</title>
+</head>
+
+<body>
+<div class="navbar">
+    <a href="/">
+        <img src="{% static 'images/logo.png' %}" alt="logo">
+    </a>
+    <form action="{% url 'facts:search' %}" method="get">
+        <input type="text" align="right" id="searchbar" name="q" value="{{ request.GET.q }}">
+        <input type="submit" value="הולכת מחפשת" id="">
+    </form>
+</div>
+<div class="container">
+    <div class="artist">
+        <p>
+            חפש לפי שם אמן:
+        </p>
+        <table border="0">
+            <tr>
+                 {% for let in letters %}
+                    <td bgcolor="#CCFFCC"><a href="/artist/{{ let }}">{{ let }}</a></td>
+                {% endfor %}
+
+            </tr>
+        </table>
+    </div>
+    <div class="song">
+        <p>
+            חפש לפי שם שיר:
+
+        <table border="0">
+            <tr>
+                 {% for let in letters %}
+                    <td bgcolor="#FFCCCC"><a href="/song/{{ let }}">{{ let }}</a></td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+</div>
+
+{% block content %}PO TIDCHUF CONTENT{% endblock %}
+<footer>
+    <a href="{% url 'facts:add' %}"> הוסף עובדה חדשה </a> &nbsp;<!-- <a href="ask.php"> שאל את מימה </a> &nbsp; -->
+    <a href="#">שאלות ללא תשובות </a> &nbsp;
+    <a href="#"> מה חדש </a> &nbsp;
+    <a href="#"><b> תפתיעי אותי </b></a> &nbsp;
+    <a href="{% url 'facts:home' %}"> דף ראשי </a> &nbsp;
+    <br>
+    <p class="psico">
+        <a href="#"> RSS</a> &nbsp;
+        <a href="#"> תנאי שימוש</a> &nbsp;
+        <a href="#" > פסיכולוגית</a> &nbsp;
+        <a href="#" > פסיכולוג </a> &nbsp;
+        <a href="#"> תודות</a> &nbsp;
+        <a href="#"> צור קשר</a>
+    </p>
+    <br>
+    מימה, 2020</center>
+
+
+</footer>
+
+
+</body>
+
+</html>

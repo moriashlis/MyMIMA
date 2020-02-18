@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ name }}
+{% endblock %}
+{% block content %}
+    <div class="artist_found">
+        נמצאו {{ count }} שירים
+    </div>
+    <div>
+        {% for song in songs %}
+            <p><a href="/facts/{{ song.0 }}/{{ song.1 }}">{{ song.0 }}</a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

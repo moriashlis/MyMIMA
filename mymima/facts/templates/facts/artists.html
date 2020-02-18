@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    אומנים
+{% endblock %}
+{% block content %}
+    <div class="artist_found">
+    מצאנו {{count}} אמנים שמתחילים באות {{let}}:
+    </div>
+    <div>
+    {% for artist in artist_list %}
+        <p><a href="{% url 'facts:song_by_artist' artist %}">{{ artist }}</a></p>
+    {% endfor %}
+    </div>
+{% endblock %}
